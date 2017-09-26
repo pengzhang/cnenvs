@@ -34,13 +34,17 @@
     
 ### 修改index项目配置
     
-    1. conf/application.conf  
+    1. conf/application.conf 
     
+       修改数据库配置
+       
        * db.default = 数据库连接
           * fs 使用H2数据库文件模式
           * mem 使用H2数据库内存模式
           * msyql 参考项目中格式
           * postgres 参考项目中格式
+        
+        修改缓存配置
         
         * memcache=enabled
 
