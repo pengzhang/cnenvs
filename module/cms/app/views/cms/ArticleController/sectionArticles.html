@@ -1,0 +1,20 @@
+#{list articles, as:'article'}
+<div class="item">
+	#{if article.cover}
+	<div class="item-img">
+		<a href="/article?id=${article.id}">
+			<img src="${article.cover}" />
+		</a>
+	</div>
+	#{/if}
+	<div class="item-content">
+		<div class="item-heading"><a href="/article?id=${article.id}">${article.title}</a></div>
+		<div class="item-tag">
+			<span class="time">${article.createDate.format('yyyy-MM-dd HH:mm:ss')}</span>
+		</div>
+		<div class="item-nr">
+			${article.content.htmlText().cutString(150)}
+		</div>
+	</div>
+</div>
+#{/list}

@@ -1,0 +1,17 @@
+<div id="tjyd">
+	<h3>推荐视频</h3>
+	<ul class="tjlist">
+		#{list video_recommends, as:'video'}
+		#{if video}
+		<li>
+			<a href="/video?id=${video.id}">
+				
+				<img src="${video.cover}" />
+				<h5>${video.title.cutString(17)}</h5>
+				<p>${video.video_desc.htmlText().cutString(10)}</p>
+			</a>
+		</li>
+		#{/if}
+		#{/list}
+	</ul>
+</div>
