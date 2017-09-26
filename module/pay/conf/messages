@@ -1,0 +1,35 @@
+# Default pay messages
+# You can specialize this file for each language.
+# For exemple, for french create a messages.fr file
+
+#pay.name=pay
+
+#Custom Pay Config
+
+alipaykey.alipay_partner=支付宝合伙ID
+alipaykey.alipay_key=支付宝私钥
+alipaykey.alipay_log_path=支付宝日志路径
+alipaykey.alipay_seller_email=支付宝卖家邮箱
+alipaykey.alipay_notify_url=支付宝通知地址
+alipaykey.alipay_return_url=支付宝返回地址
+
+alipaykey.alipay_wap_partner=手机支付宝合伙ID
+alipaykey.alipay_wap_private_key=手机支付宝私钥
+alipaykey.alipay_wap_log_path=手机支付宝日志路径
+alipaykey.alipay_wap_notify_url=手机支付宝通知地址
+alipaykey.alipay_wap_return_url=手机支付宝返回地址
+
+wechat.wxpay_mchid=微信支付机器ID
+wechat.wxpay_key=微信支付私钥
+wechat.wxpay_curl_proxy_host=微信支付CURL代理主机
+wechat.wxpay_curl_proxy_port=微信支付CURL代理端口
+wechat.wxpay_report_levenl=微信支付报告级别
+wechat.wxpay_sslcert_path=微信支付SSL证书路径
+wechat.wxpay_sslkey_path=微信支付SSLKey路径
+wechat.wxpay_sslrootca_path=微信支付SSL根CA路径
+wechat.wxpay_notify_url=微信支付通知回调地址
+wechat.wxpay_domain=微信支付域名
+wechat.login=支持微信登录
+wechat.loginneed=仅支持微信访问
+wechat.snsapi=微信登录授权方式
+wechat.binduser=支持微信绑定

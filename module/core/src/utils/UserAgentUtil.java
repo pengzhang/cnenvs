@@ -22,6 +22,15 @@ public class UserAgentUtil {
 		return false;
 	}
 	
+	public static boolean isMobile(Request request) {
+		UserAgent userAgent = new UserAgent(request.headers.get("user-agent").value());
+		DeviceType dt = userAgent.getOperatingSystem().getDeviceType();
+		if(dt.equals(DeviceType.MOBILE)) {
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * 是否微信客户端
 	 * @param request

@@ -1,0 +1,157 @@
+.navbar-inverse {
+    background-color: #3b434c;
+    border-color: #48525e;
+}
+/*===============================*/
+#grid {
+	position: relative;
+	margin-top: 40px;
+}
+.breadcrumb {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.page-header{
+	padding-bottom: 0px;
+	margin-top:0px;
+	margin-bottom:5px;
+}
+
+.page-header.recommend{
+	margin-top:40px;
+}
+
+.page-header h2{
+	padding-bottom: 9px;
+}
+
+.page-header .nav-tabs{
+	margin-top: 24px;
+	border-bottom: 0;
+}
+.border{
+	border: 1px solid #ddd;
+}
+
+.card .card-content {
+    padding-bottom: 0;
+}
+.course .cards .card>img {
+   border-radius: 0;
+   margin:0 auto;
+}
+
+.course .course-info{
+	border: 1px solid #ddd;
+	margin-bottom:20px;
+}
+
+.course .card .course-detail{
+	padding:10px 20px 0 20px;
+}
+
+.course .card>img{
+	padding:0;
+}
+
+.user .cards .card>img {
+   border-radius: 50%;
+   max-width: 150px;
+   height: 150px; 
+   margin:0 auto;
+}
+
+.user .user-info{
+	border: 1px solid #ddd;
+	margin-bottom: 20px;
+}
+
+.user .card{
+	padding:10px 20px 0 20px;
+	margin-bottom: 0px;
+}
+
+.user .card-heading{
+	text-align: center;
+}
+
+.user .card-content{
+	text-align: center;
+}
+.user .card-actions{
+	margin: 5px 10px;
+}
+
+.items .item-footer.pull-right {
+    padding-top: 0px;
+    margin-top: -15px;
+}
+.items .item:last-child {
+    border-bottom: 0px;
+}
+
+
+
+/*=============Footer============*/
+.page-nav-footer{
+	margin-top:50px;
+}
+.page-nav-footer .navbar{
+	margin-bottom:0px;
+	border-radius: 0px;
+}
+
+/* Pre-footer */
+.page-prefooter {
+	padding: 30px 0;
+	clear: both;
+	background: #48525e none repeat scroll 0 0;
+    color: #a2abb7;
+}
+
+.page-prefooter h2 {
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin: 0 0 12px;
+}
+
+.page-prefooter .subscribe-form {
+	padding-top: 5px;
+}
+
+.page-prefooter .subscribe-form .form-control {
+	font-size: 12px;
+	padding: 0 14px;
+	height: 36px;
+}
+
+.page-prefooter .subscribe-form .btn {
+	text-transform: uppercase;
+	padding: 7px 16px;
+}
+
+.page-prefooter p, .page-prefooter address {
+	margin: 0;
+}
+.margin-bottom-40{
+	margin-bottom:40px;
+}
+
+/* Footer */
+.page-footer {
+	font-size: 13px;
+	font-weight: 300;
+	padding: 17px 0;
+	background: #3b434c none repeat scroll 0 0;
+    color: #a2abb7;
+}
+
+.page-footer a {
+	color: #e6e6e6;
+}
+
+.page-footer a:hover {
+	color: #f2f2f2;
+}

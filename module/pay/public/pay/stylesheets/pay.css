@@ -1,0 +1,38 @@
+.panel{
+	border-radius: 0px;
+	margin-bottom: 20px;
+	-webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.panel>.panel-heading {
+    background-color: #fff;
+}
+
+.pay-detail{
+	margin-top:30px;
+}
+.pay-detail section p{
+	font-size: 18px;
+}
+
+.pay-detail section p span{
+	font-size: 14px;
+}
+
+.pay-info img{
+	padding:10px;
+}
+.pay-info .panel.wechat{
+	border:none;
+}
+.pay-info .panel.alipay{
+	border:none;
+}
+
+.pay-info .panel.wechat a{
+	width:100px;
+}
+.pay-info .panel.alipay a{
+	width:100px;
+}

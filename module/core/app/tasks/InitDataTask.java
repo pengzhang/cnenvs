@@ -27,7 +27,7 @@ public class InitDataTask extends Job{
 	public void doJob(){
 		initAdmin();
 		initPermissions();
-		initAccessLog();
+		initSettings();
 		allNavMenu();
 	}
 	
@@ -60,9 +60,9 @@ public class InitDataTask extends Job{
 	}
 	
 	/**
-	 * 初始化访问日志配置
+	 * 初始化配置
 	 */
-	public static void initAccessLog() {
+	public static void initSettings() {
 		List<SystemSetting> sets = SystemSetting.findAll();
 
 		List<String> keys = new ArrayList<String>();
@@ -101,7 +101,6 @@ public class InitDataTask extends Job{
 		setSetting(keys,"wechat.binduser", "false");
 		
 		setSetting(keys,"init.permissions", "false");
-		
 		
 	}
 

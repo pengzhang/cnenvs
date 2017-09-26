@@ -117,10 +117,6 @@ action_url=权限URL
 UserController=用户管理
 sex=性别
 
-
-
-
-
 #Custom Config 
 attachments.type=上传存储类型
 image.server.domain=图片服务器域名
@@ -132,20 +128,7 @@ qiniu.domain=七牛服务器域名
 
 wechat.wxpay_appid=微信AppId
 wechat.wxpay_appsecret=微信密钥
-wechat.wxpay_mchid=微信支付机器ID
-wechat.wxpay_key=微信支付Key
-wechat.wxpay_curl_proxy_host=微信支付CURL代理主机
-wechat.wxpay_curl_proxy_port=微信支付CURL代理端口
-wechat.wxpay_report_levenl=微信支付报告级别
-wechat.wxpay_sslcert_path=微信支付SSL证书路径
-wechat.wxpay_sslkey_path=微信支付SSLKey路径
-wechat.wxpay_sslrootca_path=微信支付SSL根CA路径
-wechat.wxpay_notify_url=微信支付通知回调地址
-wechat.wxpay_domain=微信支付域名
-wechat.login=支持微信登录
-wechat.loginneed=仅支持微信访问
-wechat.snsapi=微信登录授权方式
-wechat.binduser=支持微信绑定
+
 
 init.permissions=初始化权限列表
 

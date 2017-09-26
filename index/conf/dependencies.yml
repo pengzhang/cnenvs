@@ -4,6 +4,7 @@ require:
     - play
     - core -> core latest.integration
     - cms -> cms latest.integration
+    - pay -> pay latest.integration
     
 repositories:
     - HM55Modules:
@@ -12,3 +13,4 @@ repositories:
         contains:
             - core
             - cms
+            - pay
