@@ -36,7 +36,8 @@ public class AlipayWapConfig {
 	public static String private_key = Play.configuration.getProperty("alipaykey.alipay_wap_private_key");
 
 	// 支付宝的公钥，无需修改该值
-	public static String ali_public_key  = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCKRJx8bqmnhh5xX0v1VOvG50LdnDu4inz2R7KwbV5x5tO9mMr7DMSeeGCj0ABSZeyoFKlmFJqwtqwYf2fYlQ8vvmYYk9gshnB0VHMvbNuKUFzuhtrF6hBw9e9936fCI+4jfpJgKUgQEMtEMQsvpz7xiQ990wj2ZmIlEbSb9QzDKQIDAQAB";
+	                                        
+	public static String ali_public_key  = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
 
 	//↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
