@@ -13,7 +13,7 @@ public class SystemSetting extends BaseModel{
 	
 	@Column(name="setting_key", columnDefinition="varchar(255) comment '系统设置的Key'")
 	public String settingKey;
-	@Column(name="setting_value", columnDefinition="varchar(255) comment '系统设置的值'")
+	@Column(name="setting_value", columnDefinition="varchar(1000) comment '系统设置的值'")
 	public String settingValue;
 	
 	public SystemSetting() {
