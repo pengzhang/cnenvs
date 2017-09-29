@@ -1,18 +1,10 @@
 package controllers;
 
-import java.util.List;
+import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import annotations.Login;
 import exceptions.ControllerException;
-import models.core.adminuser.Permission;
 import play.Logger;
 import play.Play;
-import play.cache.Cache;
 import play.mvc.After;
 import play.mvc.Before;
 import play.mvc.Catch;
@@ -25,6 +17,14 @@ public class AdminActionIntercepter extends Controller {
 	@Before()
 	private static void actionBeforeProcess() {
 		AccessLogTask.record(request);
+	}
+	
+	@Before()
+	static void checkModules(){
+		Set<String> modules = Play.modules.keySet();
+		modules.remove("core");
+		modules.remove("_docviewer");
+		renderArgs.put("modules", modules);
 	}
 
 	@After

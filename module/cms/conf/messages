@@ -3,7 +3,7 @@
 # For exemple, for french create a messages.fr file
 
 #cms.name=cms
-
+cms=内容中心
 #Eumn
 common=普通
 free=免费

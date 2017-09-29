@@ -3,7 +3,7 @@
 # For exemple, for french create a messages.fr file
 
 #pay.name=pay
-
+pay=支付中心
 #Custom Pay Config
 
 alipaykey.alipay_partner=支付宝合伙ID
