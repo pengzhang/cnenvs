@@ -106,8 +106,7 @@ public class PayController extends Controller{
 		String device = "computer";
 		if (UserAgentUtil.isWechat(request)) {
 			device = "wechat";
-		}
-		if (UserAgentUtil.isMobile(request)) {
+		}else if (UserAgentUtil.isMobile(request)) {
 			device = "mobile";
 		}
 		renderArgs.put("device", device);
