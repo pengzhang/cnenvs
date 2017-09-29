@@ -68,6 +68,7 @@ public class Assist extends Controller {
 	 * @param code
 	 */
 	@Post("/qrcode")
+	@Get("/qrcode")
 	@Api(name = "生成二维码", type = Api.HttpType.POST, url = "/qrcode", param= {@Param(clazz=String.class, name="code")}, ret={@Return(clazz=InputStream.class)})
 	public static void qrcode(String code) {
 		response.setContentTypeIfNotSet("image/png");
