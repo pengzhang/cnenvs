@@ -5,12 +5,16 @@
 		</div>
 	</form>
 	<ul class="nav menu" style="margin-bottom:50px;">
+		#{list menus, as:'menu'}
 		#{crud.types}
-			<li #{if type.name==menu}class="active"#{/if}>
+			#{if type.name==menu}
+			<li #{if type.name==curentmenu}class="active"#{/if}>
 				<a href="${type.listAction}">
 					<span class="glyphicon glyphicon-dashboard"></span> &{type.name}
 				</a>
 			</li>
+			#{/if}
 		#{/crud.types}
+		#{/list}
 	</ul>
 </div><!--/.sidebar-->

@@ -11,7 +11,7 @@
 			<ul class="nav navbar-nav">
 				<li #{if nav=='admin'}class="active"#{/if}><a href="/admin">控制台</a></li>
 				#{list  modules, as: 'module'}
-				<li #{if nav=='${module}'}class="active"#{/if}><a href="/admin/${module}">&{module}</a></li>
+				<li #{if nav=='${module}'}class="active"#{/if}><a href="/admin/admin${module}">&{module}</a></li>
 				#{/list}
 		        <li #{if nav=='setting'}class="active"#{/if}><a href="/admin/adminsystemsetting">配置中心</a></li>
 		        <li #{if nav=='cache'}class="active"#{/if}><a href="/admin/cache/clear">清理缓存</a></li>

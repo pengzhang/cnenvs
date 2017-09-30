@@ -42,7 +42,7 @@ public class Secure extends Controller {
     	boolean isCheck = true;
     	
     	//检查标示Login注解的类
-    	Class controller = Class.forName("controllers." + request.action.substring(0, request.action.lastIndexOf(".")));
+    	Class controller = request.controllerClass;
     	if(controller.isAnnotationPresent(Login.class)){
     		unless = (String[]) ArrayUtils.addAll(unless, ((Login) controller.getAnnotation(Login.class)).unless());
     	}

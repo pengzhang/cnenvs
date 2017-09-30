@@ -15,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.google.gson.Gson;
 
+import annotations.Check;
 import annotations.Exclude;
 import annotations.For;
 import annotations.Hidden;
@@ -41,7 +42,7 @@ import play.mvc.With;
 import play.utils.Java;
 import utils.SystemStatus;
 
-@With(Secure.class)
+@With({AdminActionIntercepter.class,Secure.class})
 public abstract class CRUD extends Controller {
 
     @Before
@@ -51,9 +52,9 @@ public abstract class CRUD extends Controller {
     }
 
     public static void index() {
-        if (getControllerClass() == CRUD.class) {
-            forbidden();
-        }
+//        if (getControllerClass() == CRUD.class) {
+//            forbidden();
+//        }
         Map<String, String> access = AccessLog.getAccessLogChart();
         Map<String, Object> sys = new Gson().fromJson(SystemStatus.getJsonStatus().toString(),Map.class);
         renderArgs.put("nav", "admin");

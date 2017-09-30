@@ -1,7 +1,10 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import annotations.Module;
 import exceptions.ControllerException;
 import play.Logger;
 import play.Play;
@@ -25,6 +28,27 @@ public class AdminActionIntercepter extends Controller {
 		modules.remove("core");
 		modules.remove("_docviewer");
 		renderArgs.put("modules", modules);
+	}
+	
+	@Before()
+	static void checkMenus() {
+		try {
+			List<String> menus = new ArrayList<>();
+			Class controller = request.controllerClass;
+			if(controller.isAnnotationPresent(Module.class)) {
+				String module = ((Module)controller.getAnnotation(Module.class)).value();
+				List<Class> adminControllers = Play.classloader.getAnnotatedClasses(Module.class);
+				for(Class adminController : adminControllers) {
+					if(module.equals(((Module)adminController.getAnnotation(Module.class)).value())) {
+						menus.add(adminController.getSimpleName());
+					}
+				}
+			}
+			renderArgs.put("menus", menus);
+		} catch (Exception e) {
+			error(e.getMessage());
+		}
+		
 	}
 
 	@After

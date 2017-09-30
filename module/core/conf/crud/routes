@@ -2,7 +2,6 @@
 # ~~~~~~~~~~~
 
 #{crud.types}
-GET			/admin/?											${type.controllerClass.name.substring(12).replace('$','')}.index
 GET			/admin/${type.controllerName}						${type.controllerClass.name.substring(12).replace('$','')}.list
 GET			/admin/${type.controllerName}/new					${type.controllerClass.name.substring(12).replace('$','')}.blank
 GET			/admin/${type.controllerName}/{id}					${type.controllerClass.name.substring(12).replace('$','')}.show
