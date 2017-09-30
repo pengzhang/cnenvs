@@ -10,7 +10,7 @@ import models.cms.Video;
 import play.mvc.With;
 
 @Login
-@Check("")
+@Check()
 @For(Video.class)
 @With({AdminActionIntercepter.class,Secure.class})
 public class AdminVideos extends CRUD {

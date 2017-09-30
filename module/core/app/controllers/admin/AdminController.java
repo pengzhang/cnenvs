@@ -35,7 +35,7 @@ import plugins.router.Get;
 import utils.PZDate;
 
 @Login
-@Check("")
+@Check()
 @With({AdminActionIntercepter.class,Secure.class})
 public class AdminController extends Controller{
 

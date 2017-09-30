@@ -13,7 +13,7 @@ import play.cache.Cache;
 import play.mvc.With;
 
 @Login
-@Check("")
+@Check()
 @For(AdminMenu.class)
 @With({AdminActionIntercepter.class,Secure.class})
 public class AdminMenus extends CRUD {

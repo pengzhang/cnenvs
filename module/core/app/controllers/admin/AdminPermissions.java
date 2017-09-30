@@ -11,7 +11,7 @@ import models.core.adminuser.Permission;
 import play.mvc.With;
 
 @Login
-@Check("")
+@Check()
 @For(Permission.class)
 @With({AdminActionIntercepter.class,Secure.class})
 public class AdminPermissions extends CRUD{

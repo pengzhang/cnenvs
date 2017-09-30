@@ -25,7 +25,7 @@ import play.libs.Crypto;
 import play.mvc.With;
 
 @Login
-@Check("")
+@Check()
 @For(SystemSetting.class)
 @With({AdminActionIntercepter.class,Secure.class})
 public class AdminSystemSetting extends CRUD {

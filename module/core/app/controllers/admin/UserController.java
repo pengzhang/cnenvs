@@ -11,7 +11,7 @@ import models.core.user.User;
 import play.mvc.With;
 
 @Login
-@Check("")
+@Check()
 @For(User.class)
 @With({AdminActionIntercepter.class,Secure.class})
 public class UserController extends CRUD{
