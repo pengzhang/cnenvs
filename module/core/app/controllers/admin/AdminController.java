@@ -17,6 +17,7 @@ import annotations.Api;
 import annotations.Check;
 import annotations.For;
 import annotations.Login;
+import annotations.Module;
 import annotations.Param;
 import annotations.Return;
 import controllers.AdminActionIntercepter;
@@ -35,6 +36,7 @@ import plugins.router.Get;
 import utils.PZDate;
 
 @Login
+@Module(value="core")
 @Check()
 @With({AdminActionIntercepter.class,Secure.class})
 public class AdminController extends Controller{

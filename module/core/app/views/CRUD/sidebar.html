@@ -16,5 +16,12 @@
 			#{/if}
 		#{/crud.types}
 		#{/list}
+		#{list customMenus, as:'menudata'}
+			<li>
+				<a href="${menudata.url}">
+					<span class="glyphicon glyphicon-dashboard"></span>[&{menudata.modelType}] ${menudata.name}
+				</a>
+			</li>
+		#{/list}
 	</ul>
 </div><!--/.sidebar-->

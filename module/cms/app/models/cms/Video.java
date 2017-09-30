@@ -9,7 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,6 +20,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import annotations.Exclude;
+import annotations.Hidden;
 import annotations.Upload;
 import models.cms.enumtype.VideoType;
 import play.data.validation.MaxSize;
@@ -56,8 +60,9 @@ public class Video extends CmsModel implements Serializable {
 	@Column(columnDefinition="int default 0 comment '视频展示顺序'")
 	public int v_seq;
 	
-	@ManyToMany(cascade=CascadeType.REFRESH)
-	public List<Category> categories = new ArrayList<>();
+	@ManyToOne()
+	@JoinTable(name="cms_video_category", joinColumns=@JoinColumn(name = "category_id"), inverseJoinColumns=@JoinColumn(name = "video_id"))
+	public Category category;
 	
 	@Exclude
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="video")

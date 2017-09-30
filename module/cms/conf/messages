@@ -4,10 +4,15 @@
 
 #cms.name=cms
 cms=内容中心
+
+AdminCMS=内容中心
+
 #Eumn
 common=普通
 free=免费
 ticket=单独购票
+article=文章
+video=视频
 
 AdminArticles=文章管理
 Article=文章
@@ -31,5 +36,11 @@ tryout_time=试播时长
 v_seq=视频展示顺序
 
 #Relations
+AdminCategorys=栏目管理
+Category=栏目
 categories=分类
 tags=标签
+category=栏目
+categoryType=栏目类型
+modelType=模型类型
+parentCategory=所属栏目

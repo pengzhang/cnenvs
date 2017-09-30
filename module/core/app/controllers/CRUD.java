@@ -19,8 +19,10 @@ import annotations.Check;
 import annotations.Exclude;
 import annotations.For;
 import annotations.Hidden;
+import annotations.Module;
 import annotations.SessionUser;
 import annotations.Upload;
+import controllers.CRUD.ObjectType;
 import controllers.admin.AdminMenus;
 import models.core.accesslog.AccessLog;
 import models.core.setting.AdminMenu;
@@ -42,6 +44,7 @@ import play.mvc.With;
 import play.utils.Java;
 import utils.SystemStatus;
 
+@Module(value="core")
 @With({AdminActionIntercepter.class,Secure.class})
 public abstract class CRUD extends Controller {
 
@@ -427,18 +430,12 @@ public abstract class CRUD extends Controller {
             return null;
         }
 
-		public int compare( ObjectType o1, ObjectType o2 ){
-		        return o1.compareTo( o2 );
-		}
-		
+        public int compare( ObjectType o1, ObjectType o2 ){
+        	return o1.compareTo( o2 );
+        }
+
         public int compareTo(ObjectType other) {
-        	int i = 0;
-        	try {
-        		i = AdminMenus.menuCompareTo(modelName, other.modelName);
-        	}catch(Exception e) {
-        		i = modelName.compareTo(other.modelName);
-        	}
-        	return i;
+        	return modelName.compareTo(other.modelName);
         }
 
         @Override

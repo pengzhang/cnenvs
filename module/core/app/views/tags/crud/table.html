@@ -15,7 +15,12 @@
   	<a href="@{list(status:false)}" class="btn btn-info pull-right" id="crud_status_false_btn" style="margin:0 10px;">&{'crud.list', _caller.type.modelName}</a>
    	#{/if}
    	#{else}
-   	<a href="@{blank()}" class="btn btn-primary pull-right" id="crud_add_btn">&{'crud.add', _caller.type.modelName}</a>
+	   	#{if _caller.cid}
+	   		<a href="@{blank(cid:_caller.cid)}" class="btn btn-primary pull-right" id="crud_add_btn">&{'crud.add', _caller.type.modelName}</a>
+	   	#{/if}
+	   	#{else}
+	   		<a href="@{blank()}" class="btn btn-primary pull-right" id="crud_add_btn">&{'crud.add', _caller.type.modelName}</a>
+   	 	#{/else}
   	<a href="@{list(status:true)}" class="btn btn-danger pull-right" id="crud_status_true_btn" style="margin:0 10px;">&{'crud.recycle', _caller.type.modelName}</a>
    	#{/else}
   	

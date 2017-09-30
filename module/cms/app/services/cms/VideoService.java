@@ -54,7 +54,11 @@ public class VideoService {
 	}
 
 	public List<Video> videoByCategoryList(long categoryId, int page, int size) {
-		return Video.find("select a from Video a left join a.categories c where c.id=? and a.status=?", categoryId, false).fetch(page, size);
+		return Video.find("select a from Video a left join a.category c where c.id=? and a.status=? order by a.updateDate desc", categoryId, false).fetch(page, size);
+	}
+	
+	public long countVideoByCategory(long categoryId) {
+		return Video.find("select count(a) from Video a left join a.category c where c.id=? and a.status=?", categoryId, false).first();
 	}
 
 	public List<Video> videoByTagList(long tagId, int page, int size) {

@@ -15,12 +15,7 @@ import play.mvc.Controller;
 import play.mvc.Finally;
 import tasks.AccessLogTask;
 
-public class AdminActionIntercepter extends Controller {
-
-	@Before()
-	private static void actionBeforeProcess() {
-		AccessLogTask.record(request);
-	}
+public class AdminActionIntercepter extends Intercepter {
 	
 	@Before()
 	static void checkModules(){
@@ -39,8 +34,11 @@ public class AdminActionIntercepter extends Controller {
 				String module = ((Module)controller.getAnnotation(Module.class)).value();
 				List<Class> adminControllers = Play.classloader.getAnnotatedClasses(Module.class);
 				for(Class adminController : adminControllers) {
-					if(module.equals(((Module)adminController.getAnnotation(Module.class)).value())) {
-						menus.add(adminController.getSimpleName());
+					Module adminModule = (Module) adminController.getAnnotation(Module.class);
+					if(module.equals(adminModule.value())) {
+						if(adminModule.display()) {
+							menus.add(adminController.getSimpleName());
+						}
 					}
 				}
 			}
@@ -50,27 +48,4 @@ public class AdminActionIntercepter extends Controller {
 		}
 		
 	}
-
-	@After
-	private static void actionAfterProcess() {
-	}
-	
-	@Catch(value = ControllerException.class, priority = 2)
-	private static void actionControllerExceptionProcess(ControllerException ce) {
-		ce.printStackTrace();
-		Logger.error("controller exception %s", ce.getMessage());
-		error(ce.getMessage());
-	}
-
-	@Catch(value = Throwable.class, priority = 1)
-	private static void actionExceptionProcess(Throwable throwable) {
-		throwable.printStackTrace();
-		Logger.error("exception %s", throwable.getMessage());
-		error(throwable.getMessage());
-	}
-	
-	@Finally
-    static void log() {
-    }
-	
 }

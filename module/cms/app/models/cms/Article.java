@@ -9,7 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,6 +20,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import annotations.Exclude;
+import annotations.Hidden;
 import annotations.Upload;
 import models.cms.enumtype.Open;
 import play.data.validation.MaxSize;
@@ -46,8 +50,9 @@ public class Article extends CmsModel implements Serializable {
 	@Column(columnDefinition = "varchar(50) comment '类型:0:私有,1:公开'")
 	public Open open = Open.common;
 	
-	@ManyToMany(cascade=CascadeType.REFRESH)
-	public List<Category> categories = new ArrayList<>();
+	@ManyToOne()
+	@JoinTable(name="cms_article_category", joinColumns=@JoinColumn(name = "category_id"), inverseJoinColumns=@JoinColumn(name = "article_id"))
+	public Category category;
 	
 	@Exclude
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="article")

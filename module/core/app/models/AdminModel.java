@@ -1,10 +1,10 @@
 package models;
 
 import javax.persistence.Entity;
-
-import play.db.jpa.Model;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="admin_model")
 public class AdminModel extends BaseModel {
 
 }

@@ -11,4 +11,5 @@ import play.db.Model;
 @Target(ElementType.TYPE)
 public @interface Module {
     String value();
+    boolean display() default true;
 }

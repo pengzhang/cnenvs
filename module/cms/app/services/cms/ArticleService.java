@@ -8,6 +8,7 @@ import models.cms.Article;
 import models.cms.Comment;
 import models.cms.Tag;
 import models.cms.UserLike;
+import models.cms.Video;
 import models.cms.enumtype.Quality;
 import models.cms.enumtype.Recommend;
 import models.core.user.User;
@@ -50,7 +51,11 @@ public class ArticleService {
 	}
 
 	public List<Article> articleByCategoryList(long categoryId, int page, int size) {
-		return Article.find("select a from Article a left join a.categories c where c.id=? and a.status=?", categoryId, false).fetch(page, size);
+		return Article.find("select a from Article a left join a.category c where c.id=? and a.status=? order by a.updateDate desc", categoryId, false).fetch(page, size);
+	}
+	
+	public long countArticleByCategory(long categoryId) {
+		return Article.find("select count(a) from Article a left join a.category c where c.id=? and a.status=?", categoryId, false).first();
 	}
 
 	public List<Article> articleByTagList(long tagId, int page, int size) {
