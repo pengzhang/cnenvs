@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.RandomStringUtils;
@@ -12,6 +14,7 @@ import org.apache.commons.lang.time.DateFormatUtils;
 import annotations.Hidden;
 import annotations.Price;
 import models.BaseModel;
+import models.core.user.User;
 import play.db.jpa.Transactional;
 
 @Entity
@@ -62,14 +65,9 @@ public class Order extends BaseModel{
 	@Column(columnDefinition="varchar(500) comment '购买人地址'")
 	public String buyer_address;
 	
-	@Column(columnDefinition = "bigint default 0 comment '用户ID'")
-	public long user_id;
-	
-	//邀请人部分
-	
-	@Hidden
-	@Column(columnDefinition = "bigint default 0 comment '邀请人ID'")
-	public long inviter_id;
+	@OneToOne
+	@JoinColumn(name="user_id", columnDefinition = "bigint comment '用户ID'")
+	public User user;
 	
 	//订单信息
 	
@@ -95,13 +93,10 @@ public class Order extends BaseModel{
 	@Column(columnDefinition="varchar(2000) comment '通知地址'")
 	public String notify_url;
 	
-	@Column(columnDefinition="varchar(32) default null comment '邀请码' ")
-	public String code;
-	
 	@Column(columnDefinition="varchar(50) default 0 comment '优惠码' ")
 	public String discount_code;
 	
-	@Column(columnDefinition="int(32) default 0 comment '邀请码' ")
+	@Column(columnDefinition="int(32) default 0 comment '优惠金额' ")
 	public int discount_fee;
 	
 	public Order() {

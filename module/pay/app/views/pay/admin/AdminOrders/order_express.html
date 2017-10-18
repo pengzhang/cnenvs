@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:title /}
+
+<div class="main">
+  <div class="container">
+    <div class="row">
+    	<div class="col-lg-12" id="operation">
+    		<div class="col-lg-4 col-lg-offset-4">
+    			<h2>请对准快递单的条形码</h2>
+    		</div>
+    		<button id="scan" class="btn btn-primary btn-block" style="margin-top:100px;">扫描条形码</button>
+    	</div>
+   </div>
+</div>
+</div>
+
+#{set 'moreScripts'}
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+	 wx.config({
+	     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	     appId: '${appid}', // 必填，公众号的唯一标识
+	     timestamp: '${timestamp}', // 必填，生成签名的时间戳
+	     nonceStr: '${noncestr}', // 必填，生成签名的随机串
+	     signature: '${signature}',// 必填，签名，见附录1
+	     jsApiList: ['scanQRCode','chooseImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	 });
+	 $(function(){
+		$('#scan').click(function(){
+			wx.scanQRCode({
+			    needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+			    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+			    success: function (res) {
+			    	var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+			    	$.ajax({
+			    		url:'/admin/adminorders/order/express?id=${id}',
+			    		type:'POST',
+			    		data:{'express_no':result.split(',')[1]},
+			    		success:function(data){
+			    			alert(data.message);
+			    			WeixinJSBridge.call('closeWindow');
+			    		},
+			    		error:function(e){
+			    			console.log(e)
+			    		}
+			    	})
+			    }
+			});
+		})
+	 })
+</script>
+#{/set}
+
+	

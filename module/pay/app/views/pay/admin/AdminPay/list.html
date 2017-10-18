@@ -1,0 +1,101 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.title') /}
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">支付控制台</h1>
+		</div>
+	</div><!--/.row-->
+       
+	<div class="row">
+		<div class="col-xs-6 col-md-4 col-lg-3">
+			<div class="panel panel-red panel-widget ">
+				<div class="row no-padding">
+					<div class="col-sm-4 col-lg-4 widget-left">
+						<em class="glyphicon glyphicon glyphicon-eur glyphicon-l"></em>
+					</div>
+					<div class="col-sm-8 col-lg-8 widget-right">
+						<div class="large">${totalFee/100}</div>
+						<div class="text-muted">总支付金额</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4 col-lg-3">
+			<div class="panel panel-orange panel-widget ">
+				<div class="row no-padding">
+					<div class="col-sm-4 col-lg-4 widget-left">
+						<em class="glyphicon glyphicon glyphicon-eur glyphicon-l"></em>
+					</div>
+					<div class="col-sm-8 col-lg-8 widget-right">
+						<div class="large">${todayFee/100}</div>
+						<div class="text-muted">今日支付</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4 col-lg-3">
+			<div class="panel panel-blue panel-widget ">
+				<div class="row no-padding">
+					<div class="col-sm-4 col-lg-4 widget-left">
+						<em class="glyphicon glyphicon glyphicon-eur glyphicon-l"></em>
+					</div>
+					<div class="col-sm-8 col-lg-8 widget-right">
+						<div class="large">${yesterDayFee/100}</div>
+						<div class="text-muted">昨日支付</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4 col-lg-3">
+			<div class="panel panel-teal panel-widget ">
+				<div class="row no-padding">
+					<div class="col-sm-4 col-lg-4 widget-left">
+						<em class="glyphicon glyphicon glyphicon-eur glyphicon-l"></em>
+					</div>
+					<div class="col-sm-8 col-lg-8 widget-right">
+						<div class="large">${monthFee/100}</div>
+						<div class="text-muted">近一周支付</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!--/.row-->
+	
+	<div class="row" style="margin-top:30px">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">支付通道使用比例</div>
+				<div class="panel-body" style="height:280px">
+					<div class="canvas-wrapper">
+						<input id="alipay" type="hidden" value="${alipayUseTotal}" />
+						<input id="weixin" type="hidden" value="${weixinUseTotal}" />
+						<canvas class="main-chart" id="usetime-pie-chart" style="max-height:230px; padding:10px 0;"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">最近支付通道使用量</div>
+				<div class="panel-body" style="height:280px">
+					<div class="canvas-wrapper">
+						<div class="canvas-wrapper">
+						<input type="hidden" id="chart_data_title" value="">
+						<input type="hidden" id="chart_data_content" value="">
+						<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	<!--/.main-->
+
+#{set 'moreScripts'}
+	<script src="/public/crud/javascripts/chart/chart.min.js"></script>
+	<script src="/public/pay/javascripts/chart/chart-data.js"></script>
+	<script src="/public/crud/javascripts/easypiechart/easypiechart.js"></script>
+	<script src="/public/crud/javascripts/easypiechart/easypiechart-data.js"></script>\
+#{/set}

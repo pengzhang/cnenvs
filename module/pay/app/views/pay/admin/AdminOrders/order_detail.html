@@ -1,0 +1,164 @@
+<div class="panel panel-info order_detail">
+  <div class="panel-heading">购买人信息</div>
+  <div class="panel-body">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>姓名:</td>
+				<td>${order.buyer_name}</td>
+			</tr>
+			<tr>
+				<td>手机号:</td>
+				<td>${order.buyer_mobile}</td>
+			</tr>
+			<tr>
+				<td>邮寄地址:</td>
+				<td>${order.buyer_address}</td>
+			</tr>
+			<tr>
+				<td>用户名:</td>
+				<td>${order.username}</td>
+			</tr>
+			<tr>
+				<td>用户ID:</td>
+				<td>${order.user_id}</td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+</div>
+
+<div class="panel panel-info order_detail">
+  <div class="panel-heading">订单信息  <img class="pull-right" src="/qrcode?code=${order.out_trade_no}" width="50" height="50"></div>
+  <div class="panel-body">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>订单号:</td>
+				<td>${order.out_trade_no}</td>
+			</tr>
+			<tr>
+				<td>银行流水号:</td>
+				<td>${order.trade_no}</td>
+			</tr>
+			<tr>
+				<td>支付方式:</td>
+				<td>
+				    #{if order.trade_type==1}
+				                微信二维码
+					#{/if}
+					#{elseif  order.trade_type==2}
+					  微信公众号
+					#{/elseif }
+					#{elseif  order.trade_type==3}
+					  支付宝即时
+					#{/elseif }
+					#{elseif  order.trade_type==4}
+					  支付手机网页
+					#{/elseif }
+					#{else}
+					   其他
+					#{/else}
+				</td>
+			</tr>
+			<tr>
+				<td>总金额:</td>
+				<td>${order.total_fee/100}</td>
+			</tr>
+			<tr>
+				<td>支付状态:</td>
+				<td>${order.status?'已支付':'未支付'}</td>
+			</tr>
+			<tr>
+				<td>支付日期:</td>
+				<td>${order.pay_date}</td>
+			</tr>
+			<tr>
+				<td>申请退款状态:</td>
+				<td>${order.refund_status?'已申请':'未申请'}</td>
+			</tr>
+			<tr>
+				<td>退款状态:</td>
+				<td>${order.isrefund?'已退款':'未退款'}</td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+</div>
+
+<div class="panel panel-info order_detail">
+  <div class="panel-heading">订单详情信息</div>
+  <div class="panel-body">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>商品编号</td>
+				<td>商品名称</td>
+				<td>购买数量</td>
+				<td>商品单价</td>
+				<td>商品总价</td>
+			</tr>
+			#{list order_items, as:'item'}
+			<tr>
+				<td>${item.product_num}</td>
+				<td>${item.product_name}</td>
+				<td>${item.quantity}</td>
+				<td>${item.product_price}</td>
+				<td>${item.product_total}</td>
+			</tr>
+			#{/list}
+		</tbody>
+	</table>
+  </div>
+</div>
+
+<div class="panel panel-info order_detail">
+  <div class="panel-heading">填写物流快递信息(微信扫码)</div>
+  <div class="panel-body" id="express_no">
+  	#{if order.express_no}
+  	<table class="table">
+		<tbody>
+			<tr>
+				<td>快递订单号:</td>
+				<td>${order.express_no}</td>
+			</tr>
+		</tbody>
+	</table>
+  	#{/if}
+  	#{else}
+	<div class="col-lg-4 col-lg-offset-3">
+		<img src="/qrcode?code=http://${domain}/admin/adminorders/order/express?id=${order.out_trade_no}" width="200" height="200">
+	</div>
+	#{/else}
+  </div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		#{if !order.express_no}
+			var eno = setInterval(function(){
+				$.ajax({
+					url:'/admin/adminorders/order/exist/expressno?id=${order.out_trade_no}',
+					type:'get',
+					success:function(data){
+						if(data.status){
+							$("#express_no").html(
+							'<table class="table">'+
+							'<tbody>'+
+								'<tr>'+
+									'<td>快递订单号:</td>'+
+									'<td>'+data.data+'</td>'+
+								'</tr>'+
+							'</tbody>'+
+							'</table>');
+							clearInterval(eno);
+						}
+					},
+					error:function(e){
+						console.log(e);
+					}
+				})
+			},2000)
+		#{/if}
+	})
+</script>
