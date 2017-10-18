@@ -1,0 +1,13 @@
+self: play -> mall 0.1
+
+require:
+    - play
+    - core -> core latest.integration
+    - pay -> core latest.integration
+repositories:
+    - HM55Modules:
+        type: local  
+        artifact: "${application.path}/../[module]"  
+        contains:
+            - core
+            - pay
