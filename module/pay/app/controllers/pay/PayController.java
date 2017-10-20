@@ -91,7 +91,7 @@ public class PayController extends Controller{
 	@Get("/pay/test")
 	public static void payTest() {
 		System.out.println(Play.applicationPath.getAbsolutePath());
-		Order order = new Order(new Date());
+		Order order = new Order();
 		order.subject = "测试订单";
 		order.body = "测试订单描述";
 		order.total_fee = 1;

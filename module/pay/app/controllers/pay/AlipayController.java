@@ -4,10 +4,11 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import controllers.ActionIntercepter;
 import models.pay.Order;
 import play.Logger;
-import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 import plugins.router.Get;
@@ -17,11 +18,14 @@ import services.alipay.util.AlipayNotify;
 import services.alipay.util.AlipaySubmit;
 import services.alipay.util.AlipayWapNotify;
 import services.alipay.util.AlipayWapSubmit;
+import services.pay.OrderService;
 import utils.Json;
-import utils.UserAgentUtil;
 
 @With({ActionIntercepter.class})
 public class AlipayController extends Controller {
+	
+	@Inject
+	static OrderService service;
 	
 	/**
 	 * 构建支付宝支付数据
@@ -33,7 +37,7 @@ public class AlipayController extends Controller {
 		// 把请求参数打包成数组
 		Map<String, String> sParaTemp = AlipayParams.setAlipayParams(order); 
 		//订单选择支付方式为支付宝
-		Order.selectPayWay(order.out_trade_no, 3);  
+		service.selectPayWay(order.out_trade_no, 3);  
 		// 建立请求
 		String sHtmlText = AlipaySubmit.buildRequest(sParaTemp, "get", "确认"); 
 		System.out.println(sHtmlText);
@@ -51,7 +55,7 @@ public class AlipayController extends Controller {
 		// 把请求参数打包成数组
 		Map<String, String> sParaTemp = AlipayParams.setAlipayWapParams(order); 
 		//订单选择支付方式为支付宝
-		Order.selectPayWay(order.out_trade_no, 4);  
+		service.selectPayWay(order.out_trade_no, 4);  
 		// 建立请求
 		String sHtmlText = AlipayWapSubmit.buildRequest(sParaTemp, "get", "确认"); 
 		renderHtml(sHtmlText);
@@ -88,7 +92,7 @@ public class AlipayController extends Controller {
 		if (verify_result) {
 			if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
 				//更新订单
-				Order.notifyUpdateOrder(out_trade_no, trade_no);
+				service.notifyUpdateOrder(out_trade_no, trade_no);
 				Logger.info("alipay return update order success,params: [out_trade_no:%s, trade_no:%s, trade_status:%s]", out_trade_no, trade_no, trade_status);
 				PayController.paySuccess(out_trade_no, "支付成功", order.return_url);
 			}
@@ -133,12 +137,12 @@ public class AlipayController extends Controller {
 		if (verify_result) {// 验证成功
 			if (trade_status.equals("TRADE_FINISHED")) {
 				//更新订单
-				Order.notifyUpdateOrder(out_trade_no, trade_no);
+				service.notifyUpdateOrder(out_trade_no, trade_no);
 				Logger.info("alipay notify update order success,params: [out_trade_no:%s, trade_no:%s, trade_status:%s]", out_trade_no, trade_no, trade_status);
 				
 			} else if (trade_status.equals("TRADE_SUCCESS")) {
 				//更新订单
-				Order.notifyUpdateOrder(out_trade_no, trade_no);
+				service.notifyUpdateOrder(out_trade_no, trade_no);
 				Logger.info("alipay notify update order success,params: [out_trade_no:%s, trade_no:%s, trade_status:%s]", out_trade_no, trade_no, trade_status);
 			}
 			renderText("success"); // 请不要修改或删除

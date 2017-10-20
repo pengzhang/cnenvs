@@ -13,6 +13,7 @@ import models.cms.Comment;
 import models.cms.Tag;
 import models.core.common.ResponseData;
 import play.cache.Cache;
+import play.inject.Injector;
 import play.mvc.Before;
 import play.mvc.With;
 import plugins.router.Get;

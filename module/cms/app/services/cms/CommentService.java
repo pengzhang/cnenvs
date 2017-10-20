@@ -1,7 +1,5 @@
 package services.cms;
 
-import org.springframework.stereotype.Component;
-
 import models.cms.Comment;
 import models.cms.UserLike;
 import models.core.user.User;
@@ -11,7 +9,6 @@ import models.core.user.User;
  * @author zp
  *
  */
-@Component
 public class CommentService {
 
 	public UserLike addLike(long id, User user) {

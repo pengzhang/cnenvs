@@ -2,8 +2,6 @@ package services.cms;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import models.cms.Comment;
 import models.cms.Tag;
 import models.cms.UserLike;
@@ -18,7 +16,6 @@ import play.db.jpa.JPA;
  * @author zp
  *
  */
-@Component
 public class VideoService {
 	
 	public Comment addComment(long id, Comment comment, User user){

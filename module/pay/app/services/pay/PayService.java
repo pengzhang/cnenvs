@@ -2,10 +2,8 @@ package services.pay;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.springframework.stereotype.Component;
 
 import models.pay.Order;
 
@@ -15,9 +13,8 @@ import models.pay.Order;
  * @author zp
  *
  */
-@Component
 public class PayService {
-
+	
 	public long alipayUseTotal() {
 		return Order.count("trade_type=? or trade_type=? and status=?", 3, 4, true);
 	}
@@ -31,24 +28,15 @@ public class PayService {
 	}
 
 	public long totalTodayFee() {
-		return sumFee(getDate(0), getCurrentDate());
+		return sumFee(getDateTime(0), getCurrentDateTime());
 	}
 
 	public long totalYesterDayFee() {
-		return sumFee(getDate(-1), getDate(0));
+		return sumFee(getDateTime(-1), getDateTime(0));
 	}
 
 	public long totalMonthFee() {
-		return sumFee(getDate(-30), getCurrentDate());
-	}
-
-	public List<Long> weixinUserStatis() {
-		return Order.find("select count(*) from Order where status=? and pay_date between ? and ? group by ", true, getDate(-30), getCurrentDate()).fetch();
-	}
-
-	public List<Long> alipayUserStatis() {
-		return Order.find("select sum(total_fee) from Order where status=? and pay_date between ? and ?", true, DateUtils.truncate(DateUtils.addDays(new Date(), -30), Calendar.DATE).getTime(), new Date().getTime()).fetch();
-
+		return sumFee(getDateTime(-30), getCurrentDateTime());
 	}
 	
 	private long sumFee(long minDate, long maxDate) {
@@ -61,11 +49,11 @@ public class PayService {
 		}
 	}
 	
-	private long getDate(int d) {
+	private long getDateTime(int d) {
 		return DateUtils.truncate(DateUtils.addDays(new Date(), d), Calendar.DATE).getTime();
 	}
 	
-	private long getCurrentDate() {
+	private long getCurrentDateTime() {
 		 return new Date().getTime();
 	}
 

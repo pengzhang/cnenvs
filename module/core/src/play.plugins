@@ -1,3 +1,2 @@
 10:plugins.router.RouterAnnotationsPlugin
 100:plugins.accesslog.AccessLogPlugin
-11:plugins.spring.SpringPlugin

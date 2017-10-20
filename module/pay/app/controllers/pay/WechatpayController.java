@@ -5,6 +5,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.apache.commons.lang.StringUtils;
 
 import com.google.gson.Gson;
@@ -18,6 +20,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 import plugins.router.Get;
 import plugins.router.Post;
+import services.pay.OrderService;
 import services.wechat.config.WechatPayConfig;
 import services.wechat.config.WechatPayParams;
 import services.wechat.model.WechatJsApiPay;
@@ -30,6 +33,9 @@ import utils.StreamUtil;
 
 @With({ActionIntercepter.class})
 public class WechatpayController extends Controller {
+	
+	@Inject
+	static OrderService service;
 
 	/**
 	 * 获取微信授权
@@ -66,7 +72,7 @@ public class WechatpayController extends Controller {
 		if(StringUtils.isEmpty(openid)){
 			PayController.payError(out_trade_no, "获取openid失败", order.return_url);
 		}else{
-			Order.updateOpenid(out_trade_no, openid);
+			service.updateOpenid(out_trade_no, openid);
 		}
 		redirect("/jsapipay/?out_trade_no=" + out_trade_no);
 	}
@@ -92,7 +98,7 @@ public class WechatpayController extends Controller {
 					//统一下单成功跳转到付款页面
 					WechatJsApiPay pay = WechatPayParams.setWechatJsApiPay(map.get("prepay_id"));
 					//支付选择微信公众号支付
-					Order.selectPayWay(order.out_trade_no, 2, StringUtils.defaultString(map.get("prepay_id")));
+					service.selectPayWay(order.out_trade_no, 2, StringUtils.defaultString(map.get("prepay_id")));
 
 					String apiparams = new Gson().toJson(pay);
 					render(apiparams, out_trade_no);
@@ -128,7 +134,7 @@ public class WechatpayController extends Controller {
 				Map<String, String> map = WechatPayParams.getWechatPayResult(nativeData);
 				Logger.info("nativepay return map:%s", Json.toJson(map));
 				if (map.get("return_code").equals("SUCCESS")) {
-					Order.selectPayWay(order.out_trade_no, 1, StringUtils.defaultString(map.get("prepay_id")));
+					service.selectPayWay(order.out_trade_no, 1, StringUtils.defaultString(map.get("prepay_id")));
 					String code_url = map.get("code_url");
 					render(code_url, out_trade_no);
 				} else {
@@ -167,7 +173,7 @@ public class WechatpayController extends Controller {
 					String out_trade_no = resultMap.get("out_trade_no");
 					String transaction_id = resultMap.get("transaction_id");
 					//更新订单信息
-					Order.notifyUpdateOrder(out_trade_no, transaction_id);
+					service.notifyUpdateOrder(out_trade_no, transaction_id);
 				} else {
 					response.setReturn_code("FAIL");
 					response.setReturn_msg("签名失败");

@@ -13,36 +13,7 @@ require:
     - commons-httpclient 3.0.1
     - org.apache.httpcomponents -> httpclient 4.5.1
     - eu.bitwalker -> UserAgentUtils 1.20
-    - org.springframework -> spring-core 3.1.1.RELEASE:
-        exclude:
-            - commons-collections -> commons-collections
-            - log4j -> log4j
-            - org.aspectj -> aspectjweaver
-    - org.springframework -> spring-beans 3.1.1.RELEASE:
-        exclude:
-            - javax.el -> el-api
-            - javax.inject -> javax.inject
-            - cglib -> cglib-nodep
-    - org.springframework -> spring-context 3.1.1.RELEASE:
-        exclude:
-            - backport-util-concurrent -> backport-util-concurrent
-            - javax.annotation -> jsr250-api
-            - javax.ejb -> *
-            - javax.inject -> javax.inject
-            - org.apache.geronimo.specs -> *
-            - javax.persistence -> persistence-api
-            - javax.validation -> validation-api
-            - javax.xml.ws -> jaxws-api
-            - cglib -> cglib-nodep
-            - aopalliance -> aopalliance
-            - org.aspectj -> aspectjweaver
-            - org.beanshell -> bsh
-            - org.codehaus.groovy -> groovy-all
-            - org.jruby -> jruby
-            - asm -> asm
-            - joda-time -> joda-time
-            - org.springframework -> spring-instrument
-            - org.hibernate -> *
+   
     
 repositories:
     - jboss:
@@ -57,4 +28,3 @@ repositories:
             - commons-httpclient -> *
             - org.apache.httpcomponents -> *
             - eu.bitwalker -> *
-            - org.springframework -> *

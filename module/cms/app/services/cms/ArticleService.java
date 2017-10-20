@@ -2,24 +2,23 @@ package services.cms;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import models.cms.Article;
 import models.cms.Comment;
 import models.cms.Tag;
 import models.cms.UserLike;
-import models.cms.Video;
 import models.cms.enumtype.Quality;
 import models.cms.enumtype.Recommend;
 import models.core.user.User;
 import play.db.jpa.JPA;
+import play.inject.BeanSource;
 
 /**
  * 文章服务层
  * @author zp
  *
  */
-@Component
 public class ArticleService {
 	
 	public Comment addComment(long id, Comment comment, User user){
@@ -73,4 +72,5 @@ public class ArticleService {
 	public List<Tag> getArticleTags(int max){
 		 return Tag.find("select t from Article a left join a.tags as t where a.status=? group by t.tag order by t.createDate desc", false).fetch(max);
 	}
+	
 }
