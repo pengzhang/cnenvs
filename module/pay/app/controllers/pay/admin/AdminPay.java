@@ -14,6 +14,7 @@ import controllers.AdminActionIntercepter;
 import controllers.CRUD;
 import controllers.Secure;
 import models.AdminModel;
+import play.cache.CacheFor;
 import play.mvc.Before;
 import play.mvc.With;
 import services.pay.PayService;
@@ -28,6 +29,7 @@ public class AdminPay extends CRUD {
 	@Inject
 	static PayService service;
 	
+	@CacheFor
 	public static void list() {
 		long alipayUseTotal = service.alipayUseTotal();
 		long weixinUseTotal = service.weixinUserTotal();
