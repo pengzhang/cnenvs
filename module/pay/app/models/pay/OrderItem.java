@@ -17,7 +17,6 @@ import play.data.validation.Required;
 public class OrderItem extends BaseModel {
 	
 	//订单详情
-
 	@Column(columnDefinition = "bigint comment '订单ID'")
 	public long order_id;
 

@@ -70,7 +70,6 @@ public class Order extends BaseModel{
 	public User user;
 	
 	//订单信息
-	
 	@Column(columnDefinition="varchar(255) comment '订单名称'")
 	public String subject;
 	
@@ -78,12 +77,10 @@ public class Order extends BaseModel{
 	public String body;
 	
 	//物流快递信息
-	
 	@Column(columnDefinition="varchar(255) comment '快递单号'")
 	public String express_no;
 	
 	//支付返回地址
-	
 	@Column(nullable=false,columnDefinition="varchar(2000) comment '商品展示地址'")
 	public String show_url;
 	
@@ -103,6 +100,16 @@ public class Order extends BaseModel{
 		String date = DateFormatUtils.format(new Date(), "yyyyMMddHHmmss");
 		String serialNo = RandomStringUtils.randomNumeric(6);
 		this.out_trade_no =  date  + serialNo;
+	}
+	
+	public void statis() {
+		String today = DateFormatUtils.format(new Date(), "yyyyMMdd");
+		Order order = Order.find("out_trade_no", this.out_trade_no).first();
+		OrderStatistics statis = OrderStatistics.find("pay_date", today).first();
+		if(statis == null) {
+			statis = new OrderStatistics();
+		}
+		statis.sum(order.trade_type, order.total_fee).save();
 	}
 
 }

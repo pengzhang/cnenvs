@@ -8,9 +8,6 @@ import models.pay.Order;
 import play.db.jpa.Transactional;
 
 public class OrderService {
-	
-	@Inject
-	static OrderStatisticsService statisService;
 
 	/**
 	 * 更新订单Openid
@@ -68,7 +65,7 @@ public class OrderService {
 		order.updateDate = new Date();
 		order.save();
 		//统计支付情况
-		statisService.statis(out_trade_no);
+		order.statis();
 	}
 	
 }

@@ -71,6 +71,8 @@
 					<div class="canvas-wrapper">
 						<input id="alipay" type="hidden" value="${alipayUseTotal}" />
 						<input id="weixin" type="hidden" value="${weixinUseTotal}" />
+						<input id="wapalipay" type="hidden" value="${wapalipayUseTotal}" />
+						<input id="wxclient" type="hidden" value="${wxclientUseTotal}" />
 						<canvas class="main-chart" id="usetime-pie-chart" style="max-height:230px; padding:10px 0;"></canvas>
 					</div>
 				</div>
@@ -82,8 +84,11 @@
 				<div class="panel-body" style="height:280px">
 					<div class="canvas-wrapper">
 						<div class="canvas-wrapper">
-						<input type="hidden" id="chart_data_title" value="">
-						<input type="hidden" id="chart_data_content" value="">
+						<input type="hidden" id="chart_data_title" value="${statis.get('pay_date')}">
+						<input type="hidden" id="chart_data_alipay" value="${statis.get('use_alipay')}">
+						<input type="hidden" id="chart_data_wapalipay" value="${statis.get('use_wapalipay')}">
+						<input type="hidden" id="chart_data_weixin" value="${statis.get('use_weixin')}">
+						<input type="hidden" id="chart_data_wxclient" value="${statis.get('use_wxclient')}">
 						<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
 					</div>
 					</div>
