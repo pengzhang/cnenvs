@@ -3,6 +3,7 @@
 # For exemple, for french create a messages.fr file
 
 #mall.name=mall
+mall=商城管理
 
 #product
 product_num=商品编号
@@ -17,3 +18,21 @@ product_price=商品价格
 product_desc=商品描述
 sale_desc=促销简介
 product_type=商品类型
+product_image=商品图片
+
+
+AdminMall=商城管理
+Mall=商城
+
+AdminProducts=商品管理
+Product=商品
+
+AdminVipProducts=会员商品管理
+VipProduct=会员商品
+
+AdminDiscountCodes=优惠码管理
+DiscountCode=优惠码管理
+
+#VipProduct
+vip_fee=会员费
+vip_days=天数

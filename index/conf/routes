@@ -6,6 +6,8 @@
 GET     /                                       Application.index
 *       /                                       module:core
 *       /                                       module:cms
+*       /                                       module:pay
+*       /                                       module:mall
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

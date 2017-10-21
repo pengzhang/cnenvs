@@ -1,4 +1,4 @@
-self: play -> mall 0.1
+self: mall -> mall 0.1
 
 require:
     - play

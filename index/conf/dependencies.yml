@@ -5,6 +5,7 @@ require:
     - core -> core latest.integration
     - cms -> cms latest.integration
     - pay -> pay latest.integration
+    - mall -> mall latest.integration
     
 repositories:
     - HM55Modules:
@@ -14,3 +15,4 @@ repositories:
             - core
             - cms
             - pay
+            - mall

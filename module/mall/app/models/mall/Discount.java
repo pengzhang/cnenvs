@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import models.BaseModel;
 
 @Entity
-@Table(name="discount")
-@org.hibernate.annotations.Table(comment="折扣管理", appliesTo = "discount")
+@Table(name="mall_discount")
+@org.hibernate.annotations.Table(comment="折扣管理", appliesTo = "mall_discount")
 public class Discount extends BaseModel implements Serializable{
 	
 	@Column(columnDefinition="varchar(255) comment '口令'")

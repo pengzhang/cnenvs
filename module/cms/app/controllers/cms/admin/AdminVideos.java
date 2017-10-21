@@ -39,15 +39,15 @@ public class AdminVideos extends CRUD {
 		render("/cms/admin/AdminVideos/list.html", type, objects, count, totalCount, page, cid);
 	}
 
-	public static void blank(Long cid) throws Exception {
-		ObjectType type = ObjectType.get(getControllerClass());
-		Video object = new Video();
-		object.category = Category.findById(cid);
-		try {
-            render(type, object);
-        } catch (TemplateNotFoundException e) {
-            render("CRUD/blank.html", type, object);
-        }
-	}
+//	public static void blank(Long cid) throws Exception {
+//		ObjectType type = ObjectType.get(getControllerClass());
+//		Video object = new Video();
+//		object.category = Category.findById(cid);
+//		try {
+//            render(type, object);
+//        } catch (TemplateNotFoundException e) {
+//            render("CRUD/blank.html", type, object);
+//        }
+//	}
 
 }

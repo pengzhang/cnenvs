@@ -20,8 +20,8 @@ public class AdminActionIntercepter extends Intercepter {
 	@Before()
 	static void checkModules(){
 		Set<String> modules = Play.modules.keySet();
-		modules.remove("core");
-		modules.remove("_docviewer");
+//		modules.remove("core");
+//		modules.remove("_docviewer");
 		renderArgs.put("modules", modules);
 	}
 	

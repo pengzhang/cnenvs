@@ -1,22 +1,25 @@
 package models.mall;
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import annotations.Exclude;
-import annotations.Hidden;
 import annotations.Price;
+import annotations.Upload;
 import models.BaseModel;
+import models.mall.enumtype.ProductType;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 
 @Entity
-@Table(name="product")
-@org.hibernate.annotations.Table(comment="商品", appliesTo = "product")
+@Table(name="mall_product")
+@org.hibernate.annotations.Table(comment="商品", appliesTo = "mall_product")
 public class Product extends BaseModel implements Serializable{
 
 	//商品基本信息
@@ -33,7 +36,7 @@ public class Product extends BaseModel implements Serializable{
 	@Column(columnDefinition = "text comment '商品描述'")
 	public String product_detail;
 	
-	@Hidden
+	@Upload
 	@Column(columnDefinition = "varchar(5000) comment '商品图片(最多10张)'")
 	public String product_image;
 	
@@ -44,19 +47,16 @@ public class Product extends BaseModel implements Serializable{
 	public String sale_desc;
 	
 	@Required(message="商品类型")
-	@Exclude
-	@Column(columnDefinition = "tinyint default 2 comment '商品类型:1-会员商品,2-普通商品'")
-	public int product_type;
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "varchar(50) comment '商品类型:1-会员商品,2-普通商品'")
+	public ProductType product_type;
 	
 	//物流信息
-	@Hidden
-	//@Required(message="填写商品发货时间")
 	@Column(columnDefinition = "varchar(255) comment '商品发货时间'")
-	public String product_delivery_time;
+	public Date product_delivery_time;
 	
 	//价格
 	@Price
-	@Exclude
 	@Required(message="填写商品价格")
 	@Column(columnDefinition = "int comment '商品价格(以分为单位)'")
 	public int product_price;
