@@ -14,7 +14,7 @@ import models.BaseModel;
 public class DiscountCode extends BaseModel implements Serializable {
 
 	@Column(columnDefinition="bigint comment '折扣券ID'")
-	public long did;
+	public long discount_id;
 	
 	@Column(columnDefinition="varchar(50) comment '优惠码'")
 	public String discount_code;
@@ -26,7 +26,7 @@ public class DiscountCode extends BaseModel implements Serializable {
 	public long expire_date;
 	
 	@Column(columnDefinition="tinyint comment '优惠券状态:0:正常, 1: 被占用, 2: 被使用'")
-	public int dis_type=0;
+	public int dis_status=0;
 	
 	@Column(columnDefinition="bigint comment '使用者'")
 	public long uid;
@@ -35,7 +35,7 @@ public class DiscountCode extends BaseModel implements Serializable {
 	}
 
 	public DiscountCode(String discount_code,Discount discount) {
-		this.did = discount.id;
+		this.discount_id = discount.id;
 		this.discount_code = discount_code;
 		this.discount = discount.discount;
 		this.expire_date = discount.expire_date;
@@ -47,7 +47,7 @@ public class DiscountCode extends BaseModel implements Serializable {
 	 */
 	public static void takeUpCode(long id){
 		DiscountCode code = DiscountCode.findById(id);
-		code.dis_type = 1;
+		code.dis_status = 1;
 		code.save();
 	}
 	
@@ -57,7 +57,7 @@ public class DiscountCode extends BaseModel implements Serializable {
 	 */
 	public static void useCode(long id, long uid){
 		DiscountCode code = DiscountCode.findById(id);
-		code.dis_type = 1;
+		code.dis_status = 1;
 		code.uid = uid;
 		code.save();
 	}

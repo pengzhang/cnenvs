@@ -12,12 +12,20 @@
 			    </div>
 			
 			    <div id="crudListTable">
-			        #{crud.table fields:['diskey','discount','generate_num','expire_date','operation']}
-				        #{crud.custom 'diskey'}
-					        ${object.diskey}
-					    #{/crud.custom}
+			        #{crud.table fields:['discount_id','discount_code', 'discount','expire_date', 'dis_status','operation']}
 					    #{crud.custom 'expire_date'}
 					        ${new Date(object.expire_date).format("yyyy-MM-dd")}
+					    #{/crud.custom}
+					    #{crud.custom 'dis_status'}
+					    	#{if object_dis_status == 0}
+					    		正常
+					    	#{/if}  
+					    	#{elseif object_dis_status == 1}
+					    		被占用
+					    	#{/elseif}  
+					    	#{else}
+					    		被使用
+					    	#{/else} 
 					    #{/crud.custom}
 				     	#{crud.custom 'operation'}
 				     		#{form @delete(object._key())}

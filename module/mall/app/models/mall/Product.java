@@ -60,6 +60,9 @@ public class Product extends BaseModel implements Serializable{
 	@Required(message="填写商品价格")
 	@Column(columnDefinition = "int comment '商品价格(以分为单位)'")
 	public int product_price;
+	
+	@Column(columnDefinition = "int default 0 comment '销售数量'")
+	public int sale_count;
 
 	@Override
 	public String toString() {

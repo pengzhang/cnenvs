@@ -25,7 +25,7 @@ import services.cms.ArticleService;
 @Module(value="cms")
 @For(Article.class)
 @With({AdminCmsActionIntercepter.class,Secure.class})
-public class AdminArticles extends CRUD {
+public class AdminCrticles extends CRUD {
 
 	@Inject
 	static ArticleService service;

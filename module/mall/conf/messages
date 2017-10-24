@@ -32,7 +32,22 @@ VipProduct=会员商品
 
 AdminDiscountCodes=优惠码管理
 DiscountCode=优惠码管理
+discount_id=折扣券ID
+discount_code=优惠码
+discount=折扣金额
+expire_date=有效期
+dis_status=优惠券状态
+
 
 #VipProduct
 vip_fee=会员费
 vip_days=天数
+vipType=会员类型
+month_vip=月度会员
+year_vip=年度会员
+
+AdminProductCategories=商品分类
+p_parentCategory=所属商品分类
+ProductCategory=商品分类
+p_category=商品分类
+p_categoryType=商品类型

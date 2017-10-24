@@ -5,7 +5,7 @@
 #cms.name=cms
 cms=内容中心
 
-AdminCMS=内容中心
+AdminCMS=内容管理
 
 #Eumn
 common=普通
@@ -14,7 +14,7 @@ ticket=单独购票
 article=文章
 video=视频
 
-AdminArticles=文章管理
+AdminCrticles=文章管理
 Article=文章
 title=标题
 content=内容正文
