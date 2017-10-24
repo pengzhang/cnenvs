@@ -1,15 +1,26 @@
 package models.mall;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
+import annotations.Exclude;
 import annotations.Price;
 import annotations.Upload;
 import models.BaseModel;
@@ -20,7 +31,7 @@ import play.data.validation.Required;
 @Entity
 @Table(name="mall_product")
 @org.hibernate.annotations.Table(comment="商品", appliesTo = "mall_product")
-public class Product extends BaseModel implements Serializable{
+public class Product extends MallModel implements Serializable{
 
 	//商品基本信息
 	
@@ -63,6 +74,19 @@ public class Product extends BaseModel implements Serializable{
 	
 	@Column(columnDefinition = "int default 0 comment '销售数量'")
 	public int sale_count;
+	
+	@ManyToOne()
+	@JoinTable(name="mall_product_category", joinColumns=@JoinColumn(name = "category_id"), inverseJoinColumns=@JoinColumn(name = "product_id"))
+	public ProductCategory category;
+	
+	@Exclude
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="product")
+	@LazyCollection(value = LazyCollectionOption.EXTRA)
+	public List<ProductComment> comments = new ArrayList<>();
+	
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	public List<ProductTag> tags = new ArrayList<>();
 
 	@Override
 	public String toString() {
