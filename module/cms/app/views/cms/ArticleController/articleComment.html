@@ -1,40 +1,41 @@
-<div id="question-reply">
-	<div class="form-title" style="margin:10px 0;">评论数(${article.comments.size()})</div>
-		<ul class="reply-list">
-			#{list comments, as:'comment'}
-				#{include '/cms/ArticleController/sectionComment.html' /}
-			#{/list}
-		</ul>
-		#{if article.comments.size() > 10}
-		<div class="readmore"><a href="javascript:;" class="focusest">加载更多 <i class="icon-chevron-down"></i></a></div>
-		#{/if}
-	<div class="reply-form">
-		<form action="#" method="post">
-			<div class="form-group">
-				<div class="editbox">
-					<div class="editmenu">
-						<a href="javascript:;" title="图片" id="edit-image">
-							<i class="icon-file-image"></i> 图片
-						</a>
-						<a href="javascript:;" title="表情" id="edit-smile">
-							<i class="icon-smile"></i> 表情
-						</a>
-						<a href="javascript:;" title="全屏" id="edit-expand">
-							<i class="icon-expand-full"></i> 全屏
-						</a>
-						<a href="javascript:;" title="预览" id="edit-show">
-							<i class="icon-check-circle"></i> 预览
-						</a>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9" style="padding: 0 30px 30px;">
+			<div class="comments">
+				<header>
+					<div class="pull-right">
+						<a href="#commentReply" class="btn btn-primary"><i class="icon-comment-alt"></i> 发表评论</a>
 					</div>
-					<textarea class="form-control" rows="6" name="content" id="content" placeholder="说点什么吧！"></textarea>
-				</div>
+					<h3>所有评论</h3>
+				</header>
+				<section class="comments-list">
+					#{list comments, as:'comment'}
+						#{include '/cms/ArticleController/sectionComment.html' /}
+					#{/list}
+				</section>
+				#{if article.comments.size() > 10}
+				<div class="readmore"><a href="javascript:;" class="focusest">加载更多 <i class="icon-chevron-down"></i></a></div>
+				#{/if}
+				<footer>
+					<div class="reply-form" id="commentReply">
+						<a href="###" class="avatar"><i class="icon-user icon-2x"></i></a>
+						<form class="form">
+							<div class="form-group">
+								<textarea class="form-control new-comment-text" rows="2" id="content" placeholder="撰写评论..."></textarea>
+							</div>
+							<div class="form-group comment-user">
+								<div class="row">
+									<div class="col-md-2"><button type="button" class="btn btn-block btn-primary" id="send_comment">评论</button></div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</footer>
 			</div>
-			<div class="form-group">
-				<button type="button" class="btn btn-primary" id="send_comment">我要评论</button>
-			</div>
-		</form>
+		</div>
 	</div>
 </div>
+
 #{set 'commentScripts'}
 <script>
 	$(function(){
@@ -45,7 +46,7 @@
 				type:'post',
 				data:{'comment.comment':content},
 				success:function(data){
-					$(".reply-list").prepend(data);
+					$(".comments-list").prepend(data);
 					$("#content").val('');
 					new $.zui.Messager('评论成功', {
 				        icon: 'icon-comment',
@@ -65,7 +66,7 @@
 				type:'get',
 				success:function(data){
 					if(data){
-						$(".reply-list").append(data);
+						$(".comments-list").append(data);
 						commentPage++;
 					}else{
 						$(".readmore").remove();

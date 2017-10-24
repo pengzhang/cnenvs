@@ -1,0 +1,57 @@
+.right_bar .panel:first-child {
+	margin-top: 100px;
+}
+
+.right_bar .panel .list-group {
+	margin-bottom: 0px;
+}
+
+.right_bar .panel .list-group-item {
+	padding: 2px 5px;
+	border: 0px;
+}
+
+.goods .card {
+	border-radius: 0px;
+}
+
+.comment:last-child {
+	border-bottom: 0px;
+}
+
+.art-foot{
+	overflow: hidden;
+}
+.art-foot .zs{
+	text-align: center;
+	margin:20px 0;
+}
+.art-foot .zs .zsbtn{
+	color: #fff;
+	font-size:16px;
+	border: none;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin:0 10px;
+}
+.zsbtn i{
+	font-size: 20px;
+}
+
+.readmore{
+	text-align: center;
+	padding: 25px 0;
+}
+.readmore a{
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 25px;
+	font-size: 18px;
+	background: #4caf50;
+	border-radius: 100px;
+}
+.readmore a:hover{
+	text-decoration: none;
+	color:#fff !important;
+}

@@ -1,0 +1,35 @@
+.login {
+	margin-top: 60px;
+	height: 360px;
+}
+
+.login .showimg {
+	height: 335px;
+	opacity: 0.7;
+}
+
+.login_form form {
+	padding: 15px;
+}
+
+.login_form .checkbox {
+	color: #ccc;
+}
+
+label {
+	display: inline;
+}
+
+.reg {
+	margin-top: 15px;
+}
+
+.reg span {
+	color: #ccc;
+	font-weight: 0px;
+}
+
+.page-footer {
+	position: fixed;
+	bottom: 0px;
+}

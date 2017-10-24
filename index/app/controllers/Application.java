@@ -1,16 +1,22 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import java.util.List;
 
-import java.util.*;
+import javax.inject.Inject;
 
-import models.*;
+import models.cms.Article;
+import play.mvc.Controller;
+import services.cms.ArticleService;
 
 public class Application extends Controller {
+	
+	@Inject
+	static ArticleService articleService;
+	
 
     public static void index() {
-        redirect("/articles");
+    	List<Article> articles = articleService.getNewestList(1, 10);
+        render(articles);
     }
 
 }

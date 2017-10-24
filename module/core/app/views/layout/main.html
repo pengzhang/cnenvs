@@ -7,12 +7,19 @@
   	<title>#{get 'title' /}</title>
     <!-- zui -->
     <link href="/public/plugins/zui/css/zui.min.css" rel="stylesheet">
-    <link href="/public/layout/main.css" rel="stylesheet">
+    <link href="/public/plugins/zui/css/zui-theme-green.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/public/cnenvs/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="/public/cnenvs/css/footer.css" />
     #{get 'moreStyles' /}
   </head>
   <body>
+  
+ 	#{include '/layout/header.html' /}
    
 	#{doLayout /}
+	
+	#{include '/layout/footer.html' /}
+	
     <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
     <script src="/public/crud/javascripts/jquery.min.js"></script>
     <!-- ZUI Javascript组件 -->

@@ -85,7 +85,7 @@
 		var focusestPage = 1;
 		$(".newest").click(function(){
 			$.ajax({
-				url:'/articles?ajax=1&page='+newestPage,
+				url:'/articles/ajax?page='+newestPage,
 				type:'get',
 				success:function(data){
 					if(data){

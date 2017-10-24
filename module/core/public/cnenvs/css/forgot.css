@@ -1,0 +1,46 @@
+.login {
+	margin-top: 60px;
+	height: 320px;
+}
+
+.login_form form {
+	padding: 30px;
+}
+
+.process {
+	margin-top: 90px;
+}
+
+.process .label {
+	font-size: 30px;
+	border-radius: 2rem;
+}
+
+.process .label-default {
+	background: #ccc;
+}
+
+.process .hr {
+	width: 165px;
+	display: inline-block;
+	border: 1px solid #ccc;
+}
+
+.prompt {
+	margin-top: 15px;
+}
+
+.prompt span {
+	color: #555;
+	text-align: center;
+}
+
+.prompt .hr {
+	width: 168px;
+	display: inline-block;
+}
+
+.reg span {
+	color: #555;
+	font-weight: 0px;
+}

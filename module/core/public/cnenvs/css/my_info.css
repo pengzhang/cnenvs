@@ -1,0 +1,16 @@
+.user_info {
+	margin-top: 35px;
+	margin-left: 20px;
+}
+
+.form_text {
+	padding-top: 5px;
+}
+
+.user_info input[type="text"] {
+	width: 230px;
+}
+
+.user_info select {
+	width: 80px;
+}

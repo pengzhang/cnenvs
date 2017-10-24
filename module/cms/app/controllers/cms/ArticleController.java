@@ -47,17 +47,17 @@ public class ArticleController extends BaseController {
 	}
 	
 	@Post("/article/add/comment")
-	public static void addComment(long id, Comment comment) {
+	public static void sectionComment(long id, Comment comment) {
 		comment = service.addComment(id, comment,currentUser());
-		render("/cms/ArticleController/sectionComment.html",comment);
+		render(comment);
 	}
 	
 	@DefaultPageParam
 	@Get("/article/get/comments")
-	public static void getCommentList(long id, int page, int size) {
+	public static void sectionCommentList(long id, int page, int size) {
 		Article article = Article.findById(id);
 		List<Comment> comments = service.getComments(id, page, size);
-		render("/cms/ArticleController/sectionCommentList.html", article, comments, page, size);
+		render(article, comments, page, size);
 		
 	}
 
@@ -65,11 +65,16 @@ public class ArticleController extends BaseController {
 	@Get("/articles")
 	public static void articleList(int page, int size) {
 		List<Article> articles = service.getNewestList(page, size);
-		if(request.isAjax()) {
-			render("/cms/ArticleController/sectionArticles.html",articles,page,size);
-		}
 		render(articles,page,size);
 	}
+	
+	@Get("/articles/ajax")
+	public static void sectionArticles(int page, int size) {
+		List<Article> articles = service.getNewestList(page, size);
+		render(articles,page,size);
+	}
+	
+	
 	
 	@DefaultPageParam
 	@Get("/articles/hot")
@@ -101,6 +106,12 @@ public class ArticleController extends BaseController {
 		if(request.isAjax()) {
 			render("/cms/ArticleController/sectionArticles.html", articles, tagId, tag, page, size);
 		}
+		render(articles, tagId, tag, page, size);
+	}
+	
+	public static void articleByTagListAjax(long tagId, int page, int size) {
+		Tag tag = Tag.findById(tagId);
+		List<Article> articles = service.articleByTagList(tagId, page, size);
 		render(articles, tagId, tag, page, size);
 	}
 	

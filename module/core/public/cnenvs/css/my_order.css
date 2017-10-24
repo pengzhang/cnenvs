@@ -1,0 +1,17 @@
+.content .order_detail img {
+	height: 60px;
+	width: 60px;
+}
+
+.content .order_detail .product_img {
+	width: 80px;
+}
+
+.orderno {
+	color: #555;
+}
+
+.subtitle {
+	margin-bottom: 15px;
+	margin-top: 15px;
+}

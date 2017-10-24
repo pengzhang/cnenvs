@@ -1,20 +1,17 @@
 #{if comment}
-<li>
-	<div class="qust-about">
-		<a href="#" class="user-img">
+	<div class="comment">
+		<a href="#" class="avatar">
 			<img src="${comment.user.avatar}" />
 		</a>
-		<div class="user-info">
-			<a href="#">${comment.user.nickname}</a>
-			<p>发布于${comment.createDate.relativeDate()}</p>
+		<div class="content">
+			<div class="pull-right text-muted">${comment.createDate.relativeDate()}</div>
+			<div>
+				<a href="###"><strong>${comment.user.nickname}</strong></a>
+			</div>
+			<div class="text">${comment.comment}</div>
+			<div class="actions">
+				<a href="##">回复</a>
+			</div>
 		</div>
 	</div>
-	<div class="qust-rbody">
-		${comment.comment}
-	</div>
-	<div class="qust-rfoot">
-		<a href="javascript:;"><i class="icon-thumbs-o-up"></i> 0</a>
-		<!-- <a href="javascript:;" id="reply"><i class="icon-chat-dot"></i> 回复</a> -->
-	</div>
-</li>
 #{/if}

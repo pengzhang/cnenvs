@@ -1,0 +1,13 @@
+<div class="item">
+	<div class="item-heading">
+		<div class="pull-right label label-info">
+			<a href="#"><i class="icon-comments"></i> ${article.comments.size()}</a>
+		</div>
+		<h4><a href="./article.html">${article.title}</a></h4>
+	</div>
+	<div class="item-content">
+		<div class="media pull-left"><img src="${article.cover}"></div>
+		<div class="text text-muted">${article.content.htmlText().cutString(200)}</div>
+		<div class="text-muted show_date">${article.createDate}</div>
+	</div>
+</div>

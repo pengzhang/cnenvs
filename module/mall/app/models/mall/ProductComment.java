@@ -29,7 +29,7 @@ import play.data.validation.MaxSize;
  */
 @Entity
 @Table(name="mall_product_comment")
-@org.hibernate.annotations.Table(comment = "评论管理", appliesTo = "cms_product_comment")
+@org.hibernate.annotations.Table(comment = "评论管理", appliesTo = "mall_product_comment")
 public class ProductComment extends BaseModel implements Serializable{
 	
 	@MaxSize(value=500)
